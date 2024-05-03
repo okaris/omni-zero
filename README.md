@@ -1,9 +1,19 @@
 # Omni-Zero: A diffusion pipeline for zero-shot stylized portrait creation. 
 ## Try our free demo on [StyleOf](https://styleof.com/s/remix-yourself)
+
 ### Single Identity and Style
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2c51fb77-a810-4c0a-9555-791a294455ca)
-### Multiple Identities and Styles
+
+### Multiple Identities and Styles (WIP)
 ![Frame 7-3](https://github.com/okaris/omni-zero/assets/1448702/c5c20961-83bc-47f7-86ed-5948d5590f07)
+
+### How to run
+```
+git clone --recursive https://github.com/okaris/omni-zero.git
+cd omni-zero
+pip install -r requirements.txt
+python demo.py
+```
 
 ### Credits
 - Special thanks to [fal.ai](https://fal.ai) for providing compute for the research and hosting
