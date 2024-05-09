@@ -1,5 +1,12 @@
 # Omni-Zero: A diffusion pipeline for zero-shot stylized portrait creation. 
-## Try our free demo on [StyleOf](https://styleof.com/s/remix-yourself)
+- [x] Release single person code
+- [ ] Release couples code
+
+## Use Omni-Zero in [fal.ai](https://fal.ai) Workflows [https://fal.ai/dashboard/workflows/okaris/omni-zero](https://fal.ai/dashboard/workflows/okaris/omni-zero)
+![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2ccbdf24-eb41-4a85-975e-af701fc4a879)
+
+## Try our free demo on StyleOf [https://styleof.com/s/remix-yourself](https://styleof.com/s/remix-yourself)
+![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2423a219-2191-4b6a-8e7b-43230e137cd7)
 
 ### Single Identity and Style
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2c51fb77-a810-4c0a-9555-791a294455ca)
