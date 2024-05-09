@@ -1,11 +1,24 @@
 import math
 import PIL
+from PIL import Image
 import cv2
 import numpy as np
 
 from diffusers.utils import load_image
 
 def draw_kps(image_pil, kps, color_list=[(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255)]):
+    """
+    Draw keypoints on an image.
+
+    Args:
+    image_pil (PIL.Image): Image on which to draw the keypoints.
+    kps (list): List of keypoints to draw.
+    color_list (list): List of colors to use for drawing the keypoints.
+
+    Returns:
+    PIL.Image: Image with keypoints drawn on it.
+    """
+    
     stickwidth = 4
     limbSeq = np.array([[0, 2], [1, 2], [3, 2], [4, 2]])
     kps = np.array(kps)
@@ -41,8 +54,20 @@ def draw_kps(image_pil, kps, color_list=[(255, 0, 0), (0, 255, 0), (0, 0, 255), 
 
 
 def load_and_resize_image(image_path, max_width, max_height, maintain_aspect_ratio=True):
+    """
+    Load and resize an image to the specified dimensions.
+    
+    Args:
+    image_path (str): Path to the image file.
+    max_width (int): Maximum width of the resized image.
+    max_height (int): Maximum height of the resized image.
+    maintain_aspect_ratio (bool): Whether to maintain the aspect ratio of the image.
+    
+    Returns:
+    PIL.Image: Resized image.
+    """
+
     # Open the image
-    # image = Image.open(image_path)
     image = load_image(image_path)
 
     # Get the current width and height of the image
@@ -73,7 +98,6 @@ def load_and_resize_image(image_path, max_width, max_height, maintain_aspect_rat
 
     return resized_image
 
-from PIL import Image
 
 def align_images(image1, image2):
     """
@@ -97,3 +121,45 @@ def align_images(image1, image2):
         image2 = image2.crop((0, 0, new_width, new_height))
 
     return image1, image2
+
+def align_images_2(image1, image2):
+    """
+    Resize and crop the second image to match the dimensions of the first image by
+    scaling to aspect fill and then center cropping the extra parts.
+
+    Args:
+    image1 (PIL.Image): First image which will act as the reference for alignment.
+    image2 (PIL.Image): Second image to be aligned to the first image's dimensions.
+
+    Returns:
+    tuple: A tuple containing the first image and the aligned second image.
+    """
+    # Get dimensions of the first image
+    target_width, target_height = image1.size
+
+    # Calculate the aspect ratio of the second image
+    aspect_ratio = image2.width / image2.height
+
+    # Calculate dimensions to aspect fill
+    if target_width / target_height > aspect_ratio:
+        # The first image is wider relative to its height than the second image
+        fill_height = target_height
+        fill_width = int(fill_height * aspect_ratio)
+    else:
+        # The first image is taller relative to its width than the second image
+        fill_width = target_width
+        fill_height = int(fill_width / aspect_ratio)
+
+    # Resize the second image to fill dimensions
+    filled_image = image2.resize((fill_width, fill_height), Image.Resampling.LANCZOS)
+
+    # Calculate top-left corner of crop box to center crop
+    left = (fill_width - target_width) / 2
+    top = (fill_height - target_height) / 2
+    right = left + target_width
+    bottom = top + target_height
+
+    # Crop the filled image to match the size of the first image
+    cropped_image = filled_image.crop((int(left), int(top), int(right), int(bottom)))
+
+    return image1, cropped_image

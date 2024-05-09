@@ -57,6 +57,7 @@ class OmniZeroSingle():
         self.pipeline.scheduler = DPMSolverMultistepScheduler.from_config(config, use_karras_sigmas=True, algorithm_type="sde-dpmsolver++", final_sigmas_type="zero")
 
         self.pipeline.load_ip_adapter(["okaris/ip-adapter-instantid", "h94/IP-Adapter", "h94/IP-Adapter"], subfolder=[None, "sdxl_models", "sdxl_models"], weight_name=["ip-adapter-instantid.bin", "ip-adapter-plus_sdxl_vit-h.safetensors", "ip-adapter-plus_sdxl_vit-h.safetensors"])
+   
     def get_largest_face_embedding_and_kps(self, image, target_image=None):
         face_info = self.face_analysis.get(cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR))
         if len(face_info) == 0:
@@ -157,3 +158,65 @@ class OmniZeroSingle():
         ).images
 
         return images
+    
+class OmniZeroCouple():
+    def __init__(self,
+        base_model="stabilityai/stable-diffusion-xl-base-1.0",
+    ):
+        snapshot_download("okaris/antelopev2", local_dir="./models/antelopev2")
+        self.face_analysis = FaceAnalysis(name='antelopev2', root='./', providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
+        self.face_analysis.prepare(ctx_id=0, det_size=(640, 640))
+
+        dtype = torch.float16
+
+        ip_adapter_plus_image_encoder = CLIPVisionModelWithProjection.from_pretrained(
+            "h94/IP-Adapter", 
+            subfolder="models/image_encoder",
+            torch_dtype=dtype,
+        ).to("cuda")
+
+        zoedepthnet_path = "okaris/zoe-depth-controlnet-xl"
+        zoedepthnet = ControlNetModel.from_pretrained(zoedepthnet_path,torch_dtype=dtype).to("cuda")
+
+        identitiynet_path = "okaris/face-controlnet-xl"
+        identitynet = ControlNetModel.from_pretrained(identitiynet_path, torch_dtype=dtype).to("cuda")
+
+        self.zoe_depth_detector = ZoeDetector.from_pretrained("lllyasviel/Annotators").to("cuda")
+
+        self.pipeline = OmniZeroPipeline.from_pretrained(
+            base_model,
+            controlnet=[identitynet, zoedepthnet],
+            torch_dtype=dtype,
+            image_encoder=ip_adapter_plus_image_encoder,
+        ).to("cuda")
+
+        config = self.pipeline.scheduler.config
+        config["timestep_spacing"] = "trailing"
+        self.pipeline.scheduler = DPMSolverMultistepScheduler.from_config(config, use_karras_sigmas=True, algorithm_type="sde-dpmsolver++", final_sigmas_type="zero")
+
+        self.pipeline.load_ip_adapter(["okaris/ip-adapter-instantid", "okaris/ip-adapter-instantid", "h94/IP-Adapter", "h94/IP-Adapter"], subfolder=[None, None, "sdxl_models", "sdxl_models"], weight_name=["ip-adapter-instantid.bin", "ip-adapter-instantid.bin", "ip-adapter-plus_sdxl_vit-h.safetensors", "ip-adapter-plus_sdxl_vit-h.safetensors"])
+   
+    def generate(self,
+        seed=42,
+        prompt="A person",
+        negative_prompt="blurry, out of focus",
+        guidance_scale=3.0,
+        number_of_images=1,
+        number_of_steps=10,
+        base_image=None,
+        base_image_strength=0.15,
+        composition_image=None,
+        composition_image_strength=1.0,
+        style_image=None,
+        style_image_strength=1.0,
+        style_image_2=None,
+        style_image_strength_2=1.0,
+        identity_image=None,
+        identity_image_strength=1.0,
+        identity_image_2=None,
+        identity_image_strength_2=1.0,
+        depth_image=None,
+        depth_image_strength=0.5,        
+    ):
+        #Not implemented yet
+        print("Not implemented yet")
