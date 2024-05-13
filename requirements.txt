@@ -10,3 +10,5 @@ Pillow==10.1.0
 torch==2.0.0
 torchsde==0.2.6
 transformers==4.37.1
+onnxruntime-gpu
+hf_transfer
