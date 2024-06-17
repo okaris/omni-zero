@@ -68,6 +68,9 @@ def load_and_resize_image(image_path, max_width, max_height, maintain_aspect_rat
     """
 
     # Open the image
+    if isinstance(image_path, np.ndarray):
+        image = Image.fromarray(image_path)
+        
     image = load_image(image_path)
 
     # Get the current width and height of the image
