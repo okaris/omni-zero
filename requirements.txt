@@ -12,3 +12,5 @@ torchsde==0.2.6
 transformers==4.37.1
 onnxruntime-gpu
 hf_transfer
+gradio
+spaces
