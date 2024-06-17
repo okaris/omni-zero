@@ -3,6 +3,7 @@
 
 from cog import BasePredictor, Input, Path
 from omni_zero import OmniZeroSingle
+from PIL import Image
 
 class Predictor(BasePredictor):
     def setup(self):
@@ -32,6 +33,13 @@ class Predictor(BasePredictor):
         depth_image_strength: float = Input(description="Depth image strength for the model, if not supplied the composition image will be used for depth", default=0.5, ge=0.0, le=1.0),
     ) -> Path:
         """Run a single prediction on the model"""
+
+        base_image = Image.open(base_image)
+        composition_image = Image.open(composition_image)
+        style_image = Image.open(style_image)
+        identity_image = Image.open(identity_image)
+        if depth_image is not None:
+            depth_image = Image.open(depth_image)
         images = self.omni_zero.generate(
             seed=seed,
             prompt=prompt,
@@ -39,15 +47,15 @@ class Predictor(BasePredictor):
             guidance_scale=guidance_scale,
             number_of_images=number_of_images,
             number_of_steps=number_of_steps,
-            base_image=str(base_image),
+            base_image=base_image,
             base_image_strength=base_image_strength,
-            composition_image=str(composition_image),
+            composition_image=composition_image,
             composition_image_strength=composition_image_strength,
-            style_image=str(style_image),
+            style_image=style_image,
             style_image_strength=style_image_strength,
-            identity_image=str(identity_image),
+            identity_image=identity_image,
             identity_image_strength=identity_image_strength,
-            depth_image=str(depth_image),
+            depth_image=depth_image,
             depth_image_strength=depth_image_strength,
         )
         
