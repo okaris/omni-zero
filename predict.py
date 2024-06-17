@@ -2,6 +2,7 @@
 # https://github.com/replicate/cog/blob/main/docs/python.md
 
 from cog import BasePredictor, Input, Path
+from typing import List
 from omni_zero import OmniZeroSingle
 from PIL import Image
 
@@ -31,7 +32,7 @@ class Predictor(BasePredictor):
         identity_image_strength: float = Input(description="Identity image strength for the model", default=1.0, ge=0.0, le=1.0),
         depth_image: Path = Input(description="Depth image for the model", default=None),
         depth_image_strength: float = Input(description="Depth image strength for the model, if not supplied the composition image will be used for depth", default=0.5, ge=0.0, le=1.0),
-    ) -> Path:
+    ) -> List[Path]:
         """Run a single prediction on the model"""
 
         base_image = Image.open(base_image)
