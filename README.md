@@ -16,7 +16,7 @@ license: gpl-3.0
 - [ ] Add LoRA support
 
 ## Use Omni-Zero in HuggingFace Spaces ZeroGPU [https://huggingface.co/spaces/okaris/omni-zero](https://huggingface.co/spaces/okaris/omni-zero)
-![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2ccbdf24-eb41-4a85-975e-af701fc4a879)
+![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/1d4c40e0-41c5-4127-ba06-aec52a2d179d)
 
 ## Use Omni-Zero in [fal.ai](https://fal.ai) Workflows [https://fal.ai/dashboard/workflows/okaris/omni-zero](https://fal.ai/dashboard/workflows/okaris/omni-zero)
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2ccbdf24-eb41-4a85-975e-af701fc4a879)
