@@ -68,12 +68,8 @@ def load_and_resize_image(image_path, max_width, max_height, maintain_aspect_rat
     """
 
     # Open the image
-    print(type(image_path))
     if isinstance(image_path, np.ndarray):
-        image = Image.fromarray(image_path)
-    else:
-        #Print the type of image_path
-        print(type(image_path))
+        image_path = Image.fromarray(image_path)
 
     image = load_image(image_path)
 
