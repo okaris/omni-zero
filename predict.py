@@ -28,7 +28,7 @@ class Predictor(BasePredictor):
         style_image_strength: float = Input(description="Style image strength for the model", default=1.0, ge=0.0, le=1.0),
         identity_image: Path = Input(description="Identity image for the model"),
         identity_image_strength: float = Input(description="Identity image strength for the model", default=1.0, ge=0.0, le=1.0),
-        depth_image: Path = Input(description="Depth image for the model"),
+        depth_image: Path = Input(description="Depth image for the model", default=None),
         depth_image_strength: float = Input(description="Depth image strength for the model, if not supplied the composition image will be used for depth", default=0.5, ge=0.0, le=1.0),
     ) -> Path:
         """Run a single prediction on the model"""
@@ -39,15 +39,15 @@ class Predictor(BasePredictor):
             guidance_scale=guidance_scale,
             number_of_images=number_of_images,
             number_of_steps=number_of_steps,
-            base_image=base_image,
+            base_image=str(base_image),
             base_image_strength=base_image_strength,
-            composition_image=composition_image,
+            composition_image=str(composition_image),
             composition_image_strength=composition_image_strength,
-            style_image=style_image,
+            style_image=str(style_image),
             style_image_strength=style_image_strength,
-            identity_image=identity_image,
+            identity_image=str(identity_image),
             identity_image_strength=identity_image_strength,
-            depth_image=depth_image,
+            depth_image=str(depth_image),
             depth_image_strength=depth_image_strength,
         )
         

@@ -6,9 +6,9 @@ build:
   gpu: true
 
   # a list of ubuntu apt packages to install
-  # system_packages:
-    # - "libgl1-mesa-glx"
-    # - "libglib2.0-0"
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
 
   # python version in the form '3.8' or '3.8.12'
   python_version: "3.11"
