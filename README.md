@@ -12,6 +12,11 @@ license: gpl-3.0
 
 # Omni-Zero: A diffusion pipeline for zero-shot stylized portrait creation. 
 - [x] Release single person code
+- [x] Build Gradio app
+- [x] Add Huggingface Spaces ZeroGPU demo
+- [x] Add Replicate demo
+- [x] Add Replicate cog example
+- [x] Add fal.ai Workflow v2 (LoRA support)
 - [ ] Release couples code
 - [ ] Add LoRA support
 
