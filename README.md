@@ -1,3 +1,15 @@
+---
+title: Omni-Zero
+emoji: 🧛🏻‍♂️
+colorFrom: purple
+colorTo: red
+sdk: gradio
+sdk_version: 4.36.1
+app_file: app.py
+pinned: false
+license: gpl-3.0
+---
+
 # Omni-Zero: A diffusion pipeline for zero-shot stylized portrait creation. 
 - [x] Release single person code
 - [ ] Release couples code
