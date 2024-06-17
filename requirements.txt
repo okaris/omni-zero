@@ -1,4 +1,5 @@
 # diffusers @ git+https://github.com/huggingface/diffusers.git@0d7c4790235ac00b4524b492bc2a680dcc5cf6b0
+accelerate
 controlnet_aux==0.0.8
 huggingface_hub==0.20.2
 insightface==0.7.3

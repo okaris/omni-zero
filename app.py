@@ -2,7 +2,7 @@ import gradio as gr
 import spaces
 from omni_zero import OmniZeroSingle
 
-@spaces.GPU
+@spaces.GPU(duration=180)
 def generate(
     seed=42,
     prompt="A person",
