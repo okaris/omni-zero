@@ -1,4 +1,4 @@
-<img width="1800" alt="image" src="https://github.com/okaris/omni-zero/assets/1448702/7a672dc1-dcbc-4214-bd1e-1d024a43bcf9">---
+---
 title: Omni-Zero
 emoji: 🧛🏻‍♂️
 colorFrom: purple
@@ -15,8 +15,8 @@ license: gpl-3.0
 - [ ] Release couples code
 - [ ] Add LoRA support
 
-## Use Omni-Zero in HuggingFace Spaces ZeroGPU [https://huggingface.co/spaces/okaris/omni-zero](https://huggingface.co/spaces/okaris/omni-zero)
-![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/1d4c40e0-41c5-4127-ba06-aec52a2d179d)
+## Try our free demo on StyleOf [https://styleof.com/s/remix-yourself](https://styleof.com/s/remix-yourself)
+![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2423a219-2191-4b6a-8e7b-43230e137cd7)
 
 ## Use Omni-Zero in [fal.ai](https://fal.ai) Workflows [https://fal.ai/dashboard/workflows/okaris/omni-zero](https://fal.ai/dashboard/workflows/okaris/omni-zero)
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2ccbdf24-eb41-4a85-975e-af701fc4a879)
@@ -24,8 +24,8 @@ license: gpl-3.0
 ## Run on Replicate [https://replicate.com/okaris/omni-zero](https://replicate.com/okaris/omni-zero)
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/0d53489b-89eb-4277-907f-4317cc98db74)
 
-## Try our free demo on StyleOf [https://styleof.com/s/remix-yourself](https://styleof.com/s/remix-yourself)
-![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2423a219-2191-4b6a-8e7b-43230e137cd7)
+## Use Omni-Zero in HuggingFace Spaces ZeroGPU [https://huggingface.co/spaces/okaris/omni-zero](https://huggingface.co/spaces/okaris/omni-zero)
+![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/1d4c40e0-41c5-4127-ba06-aec52a2d179d)
 
 ### Single Identity and Style
 ![Omni-Zero](https://github.com/okaris/omni-zero/assets/1448702/2c51fb77-a810-4c0a-9555-791a294455ca)
