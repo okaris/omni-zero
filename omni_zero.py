@@ -7,6 +7,10 @@ sys.path.insert(0, './diffusers/src')
 import torch
 import torch.nn as nn
 
+#Hack for ZeroGPU
+torch.jit.script = lambda f: f
+####
+
 from huggingface_hub import snapshot_download
 from diffusers import DPMSolverMultistepScheduler
 from diffusers.models import ControlNetModel
