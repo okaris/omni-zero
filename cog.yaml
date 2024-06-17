@@ -11,7 +11,7 @@ build:
     # - "libglib2.0-0"
 
   # python version in the form '3.8' or '3.8.12'
-  python_version: "3.8"
+  python_version: "3.11"
   python_requirements: "requirements.txt"
 
   # a list of packages in the format <package-name>==<version>
