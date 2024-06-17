@@ -91,7 +91,7 @@ with gr.Blocks() as demo:
                 #         depth_image_strength = gr.Slider(label="depth_image_strength",step=0.01, minimum=0.0, maximum=1.0, value=0.5)
         with gr.Column():
             with gr.Row():
-                out = gr.Image(label="Output(s)", value=None)
+                out = gr.Gallery(label="Output(s)")
             with gr.Row():
                 # clear = gr.Button("Clear")
                 submit = gr.Button("Generate")
