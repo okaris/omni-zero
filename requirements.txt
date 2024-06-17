@@ -1,7 +1,7 @@
 accelerate
 diffusers==0.29.0
 controlnet_aux==0.0.8
-huggingface_hub==0.20.2
+huggingface_hub==0.23.2
 insightface==0.7.3
 numpy==1.26.2
 opencv_contrib_python==4.9.0.80
